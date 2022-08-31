@@ -50,12 +50,12 @@ public class ticTacToe{
             setTurn(false);
         }
         ticTacToeBoard newBoard = new ticTacToeBoard();
-        newBoard.changeValue('X', 0);
-        newBoard.printBoard();
-        /*
-        while(gameActive()){
-            if(getTurn()){
 
+        /*
+        while(gameActive()||){
+            if(getTurn()){
+                System.out.println("Yes was chosen.");
+                newBoard.playerTurn();
                 setTurn(false);
             }
             else{
