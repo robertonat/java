@@ -1,16 +1,42 @@
+
 /*
  * Class that controls the main game functions
  * Will control if the game is active, when the players turn is, what move the enemy will make. 
  * 
  */
-
+import java.awt.event.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+ import javax.swing.JPanel;
 public class ticTacToe{
     private boolean turn;
     private boolean game;
 
-    public ticTacToe(){
-        this.game = true;
+    public void initiatePanel(JPanel panel){
+        JButton backButton = new JButton("Back to main menu");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Back to menu has been clicked");
+                Main.newApp.cl.show(Main.newApp.parentPanel,"menu");
+            }
+        });
+        panel.add(backButton);
     }
+    public ticTacToe(){
+        System.out.println("TicTacToe game was chosen");
+        JPanel tictactoePanel = new JPanel();
+        JLabel label1 = new JLabel();
+        label1.setText("This is the tictactoe portion of the app");
+        tictactoePanel.add(label1);
+        initiatePanel(tictactoePanel);
+        Main.newApp.parentPanel.add(tictactoePanel, "tttmenu");
+        Main.newApp.cl.show(Main.newApp.parentPanel, "tttmenu");
+        System.out.println("Reaches the end of the tictactoe constructor");
+
+    }
+
+    
 
     public void setTurn(boolean value){
         this.turn = value;
@@ -28,41 +54,7 @@ public class ticTacToe{
     }
 
     public void run(){
-        System.out.println("Welcome to the tic tac toe game");
-        System.out.println("If you didnt mean to pick this, you can exit now");
-        System.out.println("Exit? (y/n)");
-        String choice = Main.input.nextLine();
 
-        if(choice.equals("y") ){
-            choice = "";
-            System.out.println("Yes was chosen.");
-            System.out.println("You will now be returned to the main app \n");
-            return;
-        }
-
-        System.out.println("Would you like to go first? (y/n)");
-        choice = Main.input.nextLine();
-
-        if(choice.equals("y")){
-            setTurn(true);
-        }
-        else{
-            setTurn(false);
-        }
-        ticTacToeBoard newBoard = new ticTacToeBoard();
-
-        /*
-        while(gameActive()||){
-            if(getTurn()){
-                System.out.println("Yes was chosen.");
-                newBoard.playerTurn();
-                setTurn(false);
-            }
-            else{
-                setTurn(true);
-            }
-        }
-        */
            
     }
 }

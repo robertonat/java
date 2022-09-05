@@ -1,8 +1,10 @@
+
 /*
  * Class that will control the board that is played on. Initilizes the board with the rules and prints out what the boards state is. 
  * Allows for the modification of the board. Does not control any of the game functions or methods. 
  * 
  */
+
 public class ticTacToeBoard{
     private char[][] board ={{'1','2','3'},
                     {'4','5','6'},
@@ -18,6 +20,14 @@ public class ticTacToeBoard{
 
     public char getValue(int i, int j){
         return this.board[i][j];
+    }
+
+    public boolean valid(int coordinate){
+        int i = coordinate/3;
+        if(this.getValue(i, 0) == this.getValue( i, 1) && this.getValue(i, 1) == this.getValue(i, 2))return true;
+        i = coordinate%3;
+        if(this.getValue(0,i) == this.getValue( 1, i) && this.getValue(1, i) == this.getValue(2, i))return true;
+        return false;
     }
 
     public void printBoard(){
